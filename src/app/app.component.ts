@@ -1,26 +1,11 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ThemingService } from './core/theming.service';
+import { Component} from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  themingSubscription: Subscription;
+export class AppComponent {
 
-  constructor(private theming: ThemingService) { }
-
-  @HostBinding('class') public cssClass;
-
-  ngOnInit() {
-    this.themingSubscription = this.theming.theme.subscribe(theme => {
-      this.cssClass = theme;
-    });
-  }
-
-  ngOnDestroy() {
-    this.themingSubscription.unsubscribe();
-  }
 }
